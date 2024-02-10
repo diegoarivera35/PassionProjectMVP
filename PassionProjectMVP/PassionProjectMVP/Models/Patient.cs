@@ -44,6 +44,6 @@ namespace PassionProjectMVP.Models
 
         public int PatientPhone { get; set; }
 
-
+        public virtual ICollection<MedicalProcedure> MedicalProcedures { get; set; }
     }
 }
