@@ -290,6 +290,9 @@
     <Content Include="Views\Doctor\List.cshtml" />
     <Content Include="Views\Doctor\New.cshtml" />
     <Content Include="Views\Doctor\Details.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
+    <Content Include="Views\Doctor\Error.cshtml" />
+    <Content Include="Views\Doctor\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
