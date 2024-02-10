@@ -1,17 +1,23 @@
-﻿﻿@model PassionProjectMVP.Models.PatientDto
-@{
-    ViewBag.Title = "View";
-}
+﻿    ﻿@model PassionProjectMVP.Models.ViewModels.DetailsPatient
+    @{
+        ViewBag.Title = "View";
+    }
 
-<h2>Show Patient</h2>
-<a href="/Patient/list">go back</a>
+    <h2>Show Patient</h2>
+    <a href="/Patient/list">go back</a>
+    <br />
+    <a href="/Patient/Edit/@Model.SelectedPatient.PatientID">Update</a>
+    <br />
+    <a style="color:#ab2020;" href="/Patient/DeleteConfirm/@Model.SelectedPatient.PatientID">Delete</a>
 
-<h4>Patient Name:</h4>
-<h5>@Model.PatientFirstName @Model.PatientLastName</h5>
-<h4>Patient Nationality:</h4>
-<p>@Model.PatientNationality</p>
-<h4>Patient Email:</h4>
-<p>@Model.PatientEmail</p>
-<h4>Patient Phone:</h4>
-<p>@Model.PatientPhone</p>
-<p>-----------------------------------------------------------------------------------------------</p>
+
+
+    <h4>Patient Name:</h4>
+    <h5>@Model.SelectedPatient.PatientFirstName @Model.SelectedPatient.PatientLastName</h5>
+    <h4>Patient Nationality:</h4>
+    <p>@Model.SelectedPatient.PatientNationality</p>
+    <h4>Patient Email:</h4>
+    <p>@Model.SelectedPatient.PatientEmail</p>
+    <h4>Patient Phone:</h4>
+    <p>@Model.SelectedPatient.PatientPhone</p>
+    <p>-----------------------------------------------------------------------------------------------</p>

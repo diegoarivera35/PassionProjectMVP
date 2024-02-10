@@ -1,0 +1,32 @@
+﻿﻿@model PassionProjectMVP.Models.ViewModels.UpdatePatient
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Patient</h2>
+<form action="/Patient/Update/@Model.SelectedPatient.PatientID" method="POST">
+    <div style="display:none;">
+        @* Pass through the patient ID *@
+        <input type="text" name="PatientID" value="@Model.SelectedPatient.PatientID" />
+    </div>
+    <div>
+        <label>First Name:</label> <input type="text" name="PatientFirstName" value="@Model.SelectedPatient.PatientFirstName" />
+    </div>
+    <div>
+        <label>Last Name:</label> <input type="text" name="PatientLastName" value="@Model.SelectedPatient.PatientLastName" />
+    </div>
+    <div>
+        <label>Nationality:</label> <input type="text" name="PatientNationality" value="@Model.SelectedPatient.PatientNationality" />
+    </div>
+    <div>
+        <label>Email:</label> <input type="text" name="PatientEmail" value="@Model.SelectedPatient.PatientEmail" />
+    </div>
+    <div>
+        <label>Phone:</label> <input type="number" name="PatientPhone" value="@Model.SelectedPatient.PatientPhone" />
+    </div>
+    <div>
+        <input type="submit" value="Update Patient" />
+
+    </div>
+</form>
