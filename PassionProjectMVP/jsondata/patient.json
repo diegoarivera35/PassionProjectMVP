@@ -1,9 +1,0 @@
-﻿{
-    "PatientID": "2",
-    "PatientFirstName":"Charles",
-    "PatientLastName":"Xavier",
-    "PatientNationality":"American",
-    "PatientEmail":"profesorx@gmail.com",
-    "PatientPhone": "123456"
-
-}
