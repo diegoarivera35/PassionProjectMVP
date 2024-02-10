@@ -186,6 +186,7 @@
     <Compile Include="Controllers\DoctorDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicalProcedureController.cs" />
     <Compile Include="Controllers\MedicalProcedureDataController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
@@ -203,9 +204,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MedicalProcedure.cs" />
     <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\ViewModels\DetailsMedicalProcedure.cs" />
     <Compile Include="Models\ViewModels\DetailsDoctor.cs" />
     <Compile Include="Models\ViewModels\DetailsPatient.cs" />
     <Compile Include="Models\ViewModels\UpdateDoctor.cs" />
+    <Compile Include="Models\ViewModels\UpdateMedicalProcedure.cs" />
     <Compile Include="Models\ViewModels\UpdatePatient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -293,6 +296,12 @@
     <Content Include="Views\Doctor\Edit.cshtml" />
     <Content Include="Views\Doctor\Error.cshtml" />
     <Content Include="Views\Doctor\DeleteConfirm.cshtml" />
+    <Content Include="Views\MedicalProcedure\New.cshtml" />
+    <Content Include="Views\MedicalProcedure\List.cshtml" />
+    <Content Include="Views\MedicalProcedure\Error.cshtml" />
+    <Content Include="Views\MedicalProcedure\Edit.cshtml" />
+    <Content Include="Views\MedicalProcedure\Details.cshtml" />
+    <Content Include="Views\MedicalProcedure\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
