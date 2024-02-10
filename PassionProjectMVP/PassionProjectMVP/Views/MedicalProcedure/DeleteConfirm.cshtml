@@ -9,6 +9,8 @@
 <h2>@Model.MedicalProcedureName</h2>
 <div>Medical Procedure Center: @Model.MedicalCenter</div>
 <div>Date: @Model.MedicalProcedureDate</div>
+<div>Patient ID: @Model.PatientID</div>
+<div>Doctor ID: @Model.DoctorID</div>
 <form action="/MedicalProcedure/Delete/@Model.MedicalProcedureID" method="POST">
     <input type="submit" value="Confirm Delete" />
 
