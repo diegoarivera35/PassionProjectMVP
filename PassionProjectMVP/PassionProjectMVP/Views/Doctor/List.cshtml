@@ -1,0 +1,22 @@
+﻿﻿@model IEnumerable<PassionProjectMVP.Models.DoctorDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Doctors</h2>
+<a href="/Doctor/New">New Doctor</a>
+@foreach (var doctor in Model)
+
+{
+    <h4>Doctor Name:</h4>
+    <h5>@doctor.DoctorFirstName @doctor.DoctorLastName</h5>
+    <h4>Doctor Speciality:</h4>
+    <p>@doctor.DoctorSpecialization</p>
+    <h4>Doctor Email:</h4>
+    <p>@doctor.DoctorEmail</p>
+    <h4>Doctor Phone:</h4>
+    <p>@doctor.DoctorPhone</p>
+    <a href="/Doctor/Details/@doctor.DoctorID">@doctor.DoctorFirstName @doctor.DoctorLastName</a>
+    <p>-----------------------------------------------------------------------------------------------</p>
+
+}
