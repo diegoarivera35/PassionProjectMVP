@@ -64,13 +64,6 @@ namespace PassionProjectMVP.Controllers
             Debug.WriteLine(SelectedMedicalProcedure.MedicalProcedureName);
 
             ViewModel.SelectedMedicalProcedure = SelectedMedicalProcedure;
-
-            //show associated keepers with this medicalprocedure
-            url = "keeperdata/listkeepersformedicalprocedure/" + id;
-            response = client.GetAsync(url).Result;
-
-
-
             response = client.GetAsync(url).Result;
 
 
@@ -137,9 +130,7 @@ namespace PassionProjectMVP.Controllers
             MedicalProcedureDto SelectedMedicalProcedure = response.Content.ReadAsAsync<MedicalProcedureDto>().Result;
             ViewModel.SelectedMedicalProcedure = SelectedMedicalProcedure;
 
-            // all species to choose from when updating this medicalprocedure
             //the existing medicalprocedure information
-
             response = client.GetAsync(url).Result;
 
 
