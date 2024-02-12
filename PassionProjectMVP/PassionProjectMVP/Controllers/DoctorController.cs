@@ -65,12 +65,6 @@ namespace PassionProjectMVP.Controllers
 
             ViewModel.SelectedDoctor = SelectedDoctor;
 
-            //show associated keepers with this doctor
-            url = "keeperdata/listkeepersfordoctor/" + id;
-            response = client.GetAsync(url).Result;
-
-
-
             response = client.GetAsync(url).Result;
 
 

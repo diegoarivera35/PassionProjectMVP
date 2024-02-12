@@ -17,7 +17,8 @@ namespace PassionProjectMVP.Models
 
         public string MedicalCenter { get; set; }
 
-        public DateTime MedicalProcedureDate { get; set; }
+        [Display(Name = "Procedure Date")]
+        public DateTime MedicalProcedureDate { get; set; } = DateTime.Now;
 
         //A Patient can have multiple Medical Procedures
         //A Medical Procedure can only have one patient
