@@ -148,6 +148,12 @@ namespace PassionProjectMVP.Controllers
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
             Debug.WriteLine(content);
+            Debug.WriteLine(medicalprocedure.MedicalProcedureID);
+            Debug.WriteLine(medicalprocedure.MedicalProcedureName);
+            Debug.WriteLine(medicalprocedure.MedicalProcedureDate);
+            Debug.WriteLine(medicalprocedure.MedicalCenter);
+            Debug.WriteLine(medicalprocedure.PatientID);
+            Debug.WriteLine(medicalprocedure.DoctorID);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");

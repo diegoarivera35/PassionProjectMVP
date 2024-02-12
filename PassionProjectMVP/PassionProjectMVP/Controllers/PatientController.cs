@@ -133,7 +133,7 @@ namespace PassionProjectMVP.Controllers
             PatientDto SelectedPatient = response.Content.ReadAsAsync<PatientDto>().Result;
             ViewModel.SelectedPatient = SelectedPatient;
 
-            // all species to choose from when updating this patient
+
             //the existing patient information
 
             response = client.GetAsync(url).Result;
