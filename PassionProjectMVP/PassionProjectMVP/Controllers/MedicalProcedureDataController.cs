@@ -64,7 +64,7 @@ namespace PassionProjectMVP.Controllers
         // POST: api/MedicalProcedureData/UpdateMedicalProcedure/5
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult PutMedicalProcedure(int id, MedicalProcedure medicalProcedure)
+        public IHttpActionResult UpdateMedicalProcedure(int id, MedicalProcedure medicalProcedure)
         {
             if (!ModelState.IsValid)
             {
