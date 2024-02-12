@@ -21,7 +21,7 @@ This Project is a C# - ASP.NET Web App to create, read, update and delete entiti
 
 ## Installation
 
-Clone repo and download databse
+Clone repo and download database files and add into a folder App_Data
 
     
 ## License
