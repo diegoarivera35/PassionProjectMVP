@@ -10,6 +10,8 @@ namespace PassionProjectMVP.Models.ViewModels
 
         public DoctorDto SelectedDoctor { get; set; }
 
+        public IEnumerable<MedicalProcedureDto> RelatedMedicalProcedures { get; set; }
+
 
     }
 }
