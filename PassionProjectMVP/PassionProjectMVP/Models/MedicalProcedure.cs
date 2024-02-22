@@ -21,18 +21,16 @@ namespace PassionProjectMVP.Models
         public DateTime MedicalProcedureDate { get; set; } = DateTime.Now;
 
         //A Patient can have multiple Medical Procedures
-        //A Medical Procedure can only have one patient
         [ForeignKey("Patient")]
-
         public int PatientID { get; set; }
         public virtual Patient Patient { get; set; }
 
         //A Doctor can have multiple Medical Procedures
-        //A Medical Procedure can only have one Doctor
         [ForeignKey("Doctor")]
-
         public int DoctorID { get; set; }
         public virtual Doctor Doctor { get; set; }
+
+        public ICollection<Patient> Patients { get; set; }
 
 
     }
@@ -46,8 +44,14 @@ namespace PassionProjectMVP.Models
         public DateTime MedicalProcedureDate { get; set; }
 
         public int PatientID { get; set; }
+        public string PatientFirstName { get; set; }
+        public string PatientLastName {  get; set; }
 
         public int DoctorID { get; set; }
+
+        public string DoctorFirstName {  get; set; }
+        public string DoctorLastName { get; set; }
+
 
     }
 }

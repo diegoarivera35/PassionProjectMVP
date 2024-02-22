@@ -64,11 +64,94 @@ namespace PassionProjectMVP.Controllers
             Debug.WriteLine(SelectedMedicalProcedure.MedicalProcedureName);
 
             ViewModel.SelectedMedicalProcedure = SelectedMedicalProcedure;
-            response = client.GetAsync(url).Result;
 
+            //show associated Patients with this Medical Procedure
+            url = "MedicalProceduredata/listmedicalproceduresforpatient/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<PatientDto> PatientsTakingService = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            ViewModel.PatientsTakingService = PatientsTakingService;
+
+            url = "patientdata/listpatientswithnomedicalprocedure/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<PatientDto> PatientsIntestedInServices = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+
+            ViewModel.PatientsIntestedInServices = PatientsIntestedInServices;
 
 
             return View(ViewModel);
+        }
+
+
+
+
+
+
+        //POST: MedicalProcedure/AssociatePatient/{MedicalProcedureId}/{PatientID}
+        [HttpPost]
+        public ActionResult AssociatePatient(int id, int PatientID)
+        {
+            Debug.WriteLine("Attempting to associate medicalprocedure :" + id + " with patient " + PatientID);
+
+            //call our api to associate medicalprocedure with patient
+            string url = "medicalproceduredata/associatemedicalprocedurewithpatient/" + id + "/" + PatientID;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
+        }
+
+
+        //Get: MedicalProcedure/UnAssociatePatient/{id}?PatientID={patientID}
+        [HttpGet]
+        public ActionResult UnAssociatePatient(int id, int PatientID)
+        {
+            Debug.WriteLine("Attempting to unassociate medicalprocedure :" + id + " with patient: " + PatientID);
+
+            //call our api to associate medicalprocedure with patient
+            string url = "medicalproceduredata/unassociatemedicalprocedurewithpatient/" + id + "/" + PatientID;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
+        }
+
+
+
+
+
+
+        //POST: MedicalProcedure/AssociateDoctor/{MedicalProcedureId}/{DoctorID}
+        [HttpPost]
+        public ActionResult AssociateDoctor(int id, int DoctorID)
+        {
+            Debug.WriteLine("Attempting to associate medicalprocedure :" + id + " with doctor " + DoctorID);
+
+            //call our api to associate medicalprocedure with doctor
+            string url = "medicalproceduredata/associatemedicalprocedurewithdoctor/" + id + "/" + DoctorID;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
+        }
+
+
+        //Get: MedicalProcedure/UnAssociateDoctor/{id}?DoctorID={doctorID}
+        [HttpGet]
+        public ActionResult UnAssociateDoctor(int id, int DoctorID)
+        {
+            Debug.WriteLine("Attempting to unassociate medicalprocedure :" + id + " with doctor: " + DoctorID);
+
+            //call our api to associate medicalprocedure with doctor
+            string url = "medicalproceduredata/unassociatemedicalprocedurewithdoctor/" + id + "/" + DoctorID;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
         }
 
 

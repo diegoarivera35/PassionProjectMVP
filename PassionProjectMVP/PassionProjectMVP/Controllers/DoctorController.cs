@@ -10,7 +10,6 @@ using PassionProjectMVP.Models.ViewModels;
 using System.Web.Script.Serialization;
 
 
-
 namespace PassionProjectMVP.Controllers
 {
     public class DoctorController : Controller
@@ -21,14 +20,14 @@ namespace PassionProjectMVP.Controllers
         static DoctorController()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44326/api/");
+            client.BaseAddress = new Uri("https://localhost:44324/api/");
         }
 
         // GET: Doctor/List
         public ActionResult List()
         {
-            //objective: communicate with our doctor data api to retrieve a list of doctors
-            //curl https://localhost:44326/api/doctordata/listdoctors
+            //objective: communicate with our Doctor data api to retrieve a list of Doctors
+            //curl https://localhost:44324/api/Doctordata/listdoctors
 
 
             string url = "doctordata/listdoctors";
@@ -37,12 +36,12 @@ namespace PassionProjectMVP.Controllers
             //Debug.WriteLine("The response code is ");
             //Debug.WriteLine(response.StatusCode);
 
-            IEnumerable<DoctorDto> doctors = response.Content.ReadAsAsync<IEnumerable<DoctorDto>>().Result;
-            //Debug.WriteLine("Number of doctors received : ");
-            //Debug.WriteLine(doctors.Count());
+            IEnumerable<DoctorDto> Doctors = response.Content.ReadAsAsync<IEnumerable<DoctorDto>>().Result;
+            //Debug.WriteLine("Number of Doctors received : ");
+            //Debug.WriteLine(Doctors.Count());
 
 
-            return View(doctors);
+            return View(Doctors);
         }
 
         // GET: Doctor/Details/5
@@ -50,32 +49,31 @@ namespace PassionProjectMVP.Controllers
         {
             DetailsDoctor ViewModel = new DetailsDoctor();
 
-            //objective: communicate with our doctor data api to retrieve one doctor
-            //curl https://localhost:44326/api/doctordata/finddoctor/{id}
+            //objective: communicate with our Doctor data api to retrieve one Doctor
+            //curl https://localhost:44324/api/Doctordata/finddoctor/{id}
 
-            string url = "doctordata/finddoctor/" + id;
+            string url = "doctordata/findDoctor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             Debug.WriteLine("The response code is ");
             Debug.WriteLine(response.StatusCode);
 
             DoctorDto SelectedDoctor = response.Content.ReadAsAsync<DoctorDto>().Result;
-            Debug.WriteLine("doctor received : ");
+            Debug.WriteLine("Doctor received : ");
             Debug.WriteLine(SelectedDoctor.DoctorFirstName);
 
             ViewModel.SelectedDoctor = SelectedDoctor;
 
+            //show all medicalprocedures under the care of this doctor
+            url = "medicalproceduredata/listmedicalproceduresfordoctor/" + id;
             response = client.GetAsync(url).Result;
+            IEnumerable<MedicalProcedureDto> RelatedMedicalProcedures = response.Content.ReadAsAsync<IEnumerable<MedicalProcedureDto>>().Result;
 
+            ViewModel.RelatedMedicalProcedures = RelatedMedicalProcedures;
 
 
             return View(ViewModel);
         }
-
-
-
-
-
 
         public ActionResult Error()
         {
@@ -89,20 +87,19 @@ namespace PassionProjectMVP.Controllers
             return View();
         }
 
-
         // POST: Doctor/Create
         [HttpPost]
-        public ActionResult Create(Doctor doctor)
+        public ActionResult Create(Doctor Doctor)
         {
             Debug.WriteLine("the json payload is :");
-            //Debug.WriteLine(doctor.DoctorFirstName);
-            //objective: add a new doctor into our system using the API
-            //curl -H "Content-Type:application/json" -d @doctor.json https://localhost:44326/api/doctordata/adddoctor 
+            //Debug.WriteLine(Doctor.DoctorName);
+            //objective: add a new Doctor into our system using the API
+            //curl -H "Content-Type:application/json" -d @Doctor.json https://localhost:44324/api/Doctordata/addDoctor 
             string url = "doctordata/adddoctor";
 
 
-            string jsonpayload = jss.Serialize(doctor);
-            //Debug.WriteLine(jsonpayload);
+            string jsonpayload = jss.Serialize(Doctor);
+            Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -123,30 +120,19 @@ namespace PassionProjectMVP.Controllers
         // GET: Doctor/Edit/5
         public ActionResult Edit(int id)
         {
-            UpdateDoctor ViewModel = new UpdateDoctor();
-
-            //the existing doctor information
             string url = "doctordata/finddoctor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DoctorDto SelectedDoctor = response.Content.ReadAsAsync<DoctorDto>().Result;
-            ViewModel.SelectedDoctor = SelectedDoctor;
-
-            // all species to choose from when updating this doctor
-            //the existing doctor information
-
-            response = client.GetAsync(url).Result;
-
-
-            return View(ViewModel);
+            DoctorDto selectedDoctor = response.Content.ReadAsAsync<DoctorDto>().Result;
+            return View(selectedDoctor);
         }
 
         // POST: Doctor/Update/5
         [HttpPost]
-        public ActionResult Update(int id, Doctor doctor)
+        public ActionResult Update(int id, Doctor Doctor)
         {
 
             string url = "doctordata/updatedoctor/" + id;
-            string jsonpayload = jss.Serialize(doctor);
+            string jsonpayload = jss.Serialize(Doctor);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -166,8 +152,8 @@ namespace PassionProjectMVP.Controllers
         {
             string url = "doctordata/finddoctor/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DoctorDto selecteddoctor = response.Content.ReadAsAsync<DoctorDto>().Result;
-            return View(selecteddoctor);
+            DoctorDto selectedDoctor = response.Content.ReadAsAsync<DoctorDto>().Result;
+            return View(selectedDoctor);
         }
 
         // POST: Doctor/Delete/5

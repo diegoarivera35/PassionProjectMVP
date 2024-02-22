@@ -43,8 +43,6 @@ namespace PassionProjectMVP.Models
 
         public string DoctorSpecialization { get; set; }
 
-        // Navigation property
-        public virtual ICollection<MedicalProcedure> MedicalProcedures { get; set; }
 
     }
 }

@@ -26,7 +26,10 @@ namespace PassionProjectMVP.Models
 
 
         // Navigation property representing the collection of medical procedures associated with this patient
-        public virtual ICollection<MedicalProcedure> MedicalProcedures { get; set; }
+        public ICollection<MedicalProcedure> MedicalProcedures { get; set; }
+
+
+
 
     }
 
@@ -44,6 +47,6 @@ namespace PassionProjectMVP.Models
 
         public int PatientPhone { get; set; }
 
-        public virtual ICollection<MedicalProcedure> MedicalProcedures { get; set; }
+
     }
 }
