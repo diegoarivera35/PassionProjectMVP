@@ -1,0 +1,39 @@
+﻿﻿@model IEnumerable<WebApplicationMVP.Models.MedicalProcedureDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="title">
+    <h2>Medical Procedures List</h2>
+    <a class="btn btn-primary" href="/MedicalProcedure/New">+ New Medical Procedure</a>
+</div>
+
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Medical Procedure</th>
+            <th scope="col">Date</th>
+            <th scope="col">Medical Center</th>
+            <th scope="col">Doctor</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var medicalprocedure in Model)
+        {
+
+            <tr>
+                <th scope="row">@medicalprocedure.MedicalProcedureID</th>
+                <td>@medicalprocedure.MedicalProcedureName</td>
+                <td>@medicalprocedure.MedicalProcedureDate</td>
+                <td>@medicalprocedure.MedicalCenter</td>
+                <td>@medicalprocedure.DoctorFirstName @medicalprocedure.DoctorLastName</td>
+                <td><a class="btn btn-primary" href="/MedicalProcedure/Details/@medicalprocedure.MedicalProcedureID">details</a></td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

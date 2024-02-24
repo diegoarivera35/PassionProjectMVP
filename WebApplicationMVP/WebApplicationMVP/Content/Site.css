@@ -1,0 +1,124 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+}
+
+main {
+    height: 100vh;
+}
+
+.card {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card h5 {
+    color: black;
+}
+
+.title {
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-content:baseline;
+    margin-bottom: 10px
+}
+
+.title  h2 {
+    line-height: 0;
+}
+
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.home {
+    justify-content:space-between;
+}
+
+
+.fa-solid {
+    margin: 20px 15px !important;
+}
+
+
+.fa-stethoscope:before, .fa-suitcase-medical:before, .fa-user:before {
+    font-size: 100px;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.video-background {
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+}
+
+    .video-foreground,
+    .video-background iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+@media (min-aspect-ratio: 16/9) {
+    .video-foreground {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .video-foreground {
+        width: 300%;
+        left: -100%;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .vid-info {
+        width: 50%;
+        padding: 0.5rem;
+    }
+
+        .vid-info h1 {
+            margin-bottom: 0.2rem;
+        }
+}
+
+@media all and (max-width: 500px) {
+    .vid-info .acronym {
+        display: none;
+    }
+}
+

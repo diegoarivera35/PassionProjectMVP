@@ -1,0 +1,76 @@
+﻿﻿@model WebApplicationMVP.Models.ViewModels.DetailsDoctor
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a class="btn btn-primary" href="/Doctor/List">< Go back to list</a>
+<br />
+
+<br />
+
+
+
+
+
+
+
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <th scope="col">Doctor ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Specialization</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.SelectedDoctor.DoctorID</th>
+            <td>@Model.SelectedDoctor.DoctorFirstName</td>
+            <td>@Model.SelectedDoctor.DoctorLastName</td>
+            <td>@Model.SelectedDoctor.DoctorPhone</td>
+            <td>@Model.SelectedDoctor.DoctorEmail</td>
+            <td>@Model.SelectedDoctor.DoctorSpecialization</td>
+            <td><a class="btn btn-warning" href="/Doctor/Edit/@Model.SelectedDoctor.DoctorID">Update</a></td>
+            <td><a class="btn btn-danger" href="/Doctor/DeleteConfirm/@Model.SelectedDoctor.DoctorID">- Delete</a></td>
+        </tr>
+
+
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+<div style="margin-top:20px;">
+    <h3 style="color:#fff">Medical Procedures Scheduled:</h3>
+    <ol class="list-group list-group-numbered">
+
+        @foreach (var medicalprocedure in Model.RelatedMedicalProcedures)
+        {
+            <li class="list-group-item">
+                <strong> @medicalprocedure.MedicalProcedureName </strong>
+                | date: @medicalprocedure.MedicalProcedureDate
+                <a class="btn btn-primary" style="float:right" href="/MedicalProcedure/Details/@medicalprocedure.MedicalProcedureID">Details</a>
+                <br />
+            </li>
+
+        }
+
+    </ol>
+</div>
+
+

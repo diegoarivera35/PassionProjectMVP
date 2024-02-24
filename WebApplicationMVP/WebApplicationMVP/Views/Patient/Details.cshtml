@@ -1,0 +1,104 @@
+﻿﻿@model WebApplicationMVP.Models.ViewModels.DetailsPatient
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a class="btn btn-primary" href="/Patient/List">< Go back to list</a>
+<br />
+
+
+
+
+
+
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <th scope="col">Patient ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Nationality</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.SelectedPatient.PatientID</th>
+            <td>@Model.SelectedPatient.PatientFirstName</td>
+            <td>@Model.SelectedPatient.PatientLastName</td>
+            <td>@Model.SelectedPatient.PatientNationality</td>
+            <td>@Model.SelectedPatient.PatientPhone</td>
+            <td>@Model.SelectedPatient.PatientEmail</td>
+            <td><a class="btn btn-warning" href="/Patient/Edit/@Model.SelectedPatient.PatientID">Update</a></td>
+            <td><a class="btn btn-danger" style="color:#ab2020;" href="/Patient/DeleteConfirm/@Model.SelectedPatient.PatientID">- Delete</a></td>
+        </tr>
+
+
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+<div style="margin-top:20px;">
+    <h3 style="color:#fff">Medical Procedures Scheduled:</h3>
+    <ol class="list-group list-group-numbered">
+
+        @foreach (var medicalprocedure in Model.KeptMedicalProcedures)
+        {
+            <li class="list-group-item">
+                <strong> @medicalprocedure.MedicalProcedureName </strong>
+                | date: @medicalprocedure.MedicalProcedureDate
+                | doctor: @medicalprocedure.DoctorFirstName @medicalprocedure.DoctorLastName
+                <a class="btn btn-primary" style="float:right" href="/MedicalProcedure/Details/@medicalprocedure.MedicalProcedureID">Details</a>
+                <br />
+            </li>
+
+        }
+
+    </ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
