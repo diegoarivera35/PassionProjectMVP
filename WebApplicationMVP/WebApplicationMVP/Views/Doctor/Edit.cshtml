@@ -1,0 +1,24 @@
+﻿﻿@model WebApplicationMVP.Models.DoctorDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Doctor</h2>
+<form action="/Doctor/Update/@Model.DoctorID" method="POST">
+    <div style="display:none;">
+        @* Pass through the Doctor ID *@
+        <input type="text" name="DoctorID" value="@Model.DoctorID" />
+    </div>
+    <div>
+        <label>First name:</label> <input type="text" name="DoctorFirstName" value="@Model.DoctorFirstName" />
+    </div>
+    <div>
+        <label>Last name:</label> <input type="text" name="DoctorLastName" value="@Model.DoctorLastName" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Doctor" />
+
+    </div>
+</form>

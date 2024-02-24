@@ -1,0 +1,64 @@
+﻿﻿@model WebApplicationMVP.Models.ViewModels.DetailsMedicalProcedure
+@{
+    ViewBag.Title = "View";
+}
+
+<a class="btn btn-primary" href="/MedicalProcedure/List">< Go back to list</a>
+<br /><br />
+
+
+
+
+
+
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Medical Procedure</th>
+            <th scope="col">Medical Center</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Patient</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.SelectedMedicalProcedure.MedicalProcedureID</th>
+            <td>@Model.SelectedMedicalProcedure.MedicalProcedureName</td>
+            <td>@Model.SelectedMedicalProcedure.MedicalCenter</td>
+            <td>@Model.SelectedMedicalProcedure.DoctorFirstName @Model.SelectedMedicalProcedure.DoctorLastName</td>
+            <td>@Model.SelectedMedicalProcedure.PatientFirstName @Model.SelectedMedicalProcedure.PatientLastName</td>
+            <td>@Model.SelectedMedicalProcedure.MedicalProcedureDate</td>
+            <td><a class="btn btn-warning" href="/MedicalProcedure/Edit/@Model.SelectedMedicalProcedure.MedicalProcedureID">Update</a></td>
+            <td><a class="btn btn-danger" style="color:#ab2020;" href="/MedicalProcedure/DeleteConfirm/@Model.SelectedMedicalProcedure.MedicalProcedureID">- Delete</a></td>
+        </tr>
+
+
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
